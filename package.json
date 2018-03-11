@@ -1,0 +1,48 @@
+{
+  "name": "reviso-api",
+  "version": "0.1.0",
+  "description": "Reviso Developer Test",
+  "main": "dist",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets env,stage-0\"",
+    "build": "babel src -s -D -d dist --presets env,stage-0",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "test": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
+  },
+  "repository": "",
+  "author": "Martynas Sapoka <martynas.sapoka@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
+    "cors": "^2.7.1",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9",
+    "morgan": "^1.8.0",
+    "resource-router-middleware": "^0.6.0",
+    "restful-mongoose": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.18.2",
+    "nodemon": "^1.17.1"
+  }
+}
