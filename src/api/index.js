@@ -1,21 +1,21 @@
-import { version } from '../../package.json';
-import { Router } from 'express';
-import facets from './facets';
+import {version} from '../../package.json';
+import {Router} from 'express';
+import ClientRoutes from "../routes/ClientRoutes";
 
-export default ({ config, db }) => {
-	let api = Router();
+export default ({config, db}) => {
+  let api = Router();
 
-	// mount the facets resource
-	api.use('/facets', facets({ config, db }));
+  api.use('*', (req, res, next) => {
+    res.type('application/json');
+    next();
+  });
 
-	// perhaps expose some API metadata at the root
-	api.get('/', (req, res) => {
-		res.json({ version });
-	});
+  // perhaps expose some API metadata at the root
+  api.get('/', (req, res) => {
+    res.json({version});
+  });
 
-	api.post('/clients', (req, res) => {
+  api.use('/clients', ClientRoutes());
 
-	});
-
-	return api;
+  return api;
 }
